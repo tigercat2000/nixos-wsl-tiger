@@ -8,7 +8,7 @@
   ...
 }: let
   unstable-packages = with pkgs.unstable; [
-    # FIXME: select your core binaries that you always want on the bleeding-edge
+    # core binaries that you always want on the bleeding-edge
     bat
     bottom
     coreutils
@@ -37,10 +37,11 @@
   ];
 
   stable-packages = with pkgs; [
-    # FIXME: customize these stable packages to your liking for the languages that you use
+    # customize these stable packages to your liking for the languages that you use
 
     # key tools
     gh # for bootstrapping
+    eza
     just
 
     # core languages
@@ -98,7 +99,6 @@ in {
     homeDirectory = "/home/${username}";
 
     sessionVariables.EDITOR = "lvim";
-    # FIXME: set your preferred $SHELL
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
   };
 
@@ -106,13 +106,13 @@ in {
     stable-packages
     ++ unstable-packages
     ++
-    # FIXME: you can add anything else that doesn't fit into the above two lists in here
+    # you can add anything else that doesn't fit into the above two lists in here
     [
       # pkgs.some-package
       # pkgs.unstable.some-other-package
     ];
 
-  # FIXME: if you want to version your LunarVim config, add it to the root of this repo and uncomment the next line
+  # if you want to version your LunarVim config, add it to the root of this repo and uncomment the next line
   # home.file.".config/lvim/config.lua".source = ./lvim_config.lua;
 
   programs = {
@@ -121,7 +121,7 @@ in {
     nix-index.enableZshIntegration = true;
     nix-index-database.comma.enable = true;
 
-    # FIXME: disable this if you don't want to use the starship prompt
+    # disable this if you don't want to use the starship prompt
     starship.enable = true;
     starship.settings = {
       aws.disabled = true;
@@ -137,7 +137,7 @@ in {
       hostname.style = "bold green";
     };
 
-    # FIXME: disable whatever you don't want
+    # disable whatever you don't want
     fzf.enable = true;
     fzf.enableZshIntegration = true;
     lsd.enable = true;
@@ -160,8 +160,8 @@ in {
         side-by-side = true;
         navigate = true;
       };
-      userEmail = ""; # FIXME: set your git email
-      userName = ""; #FIXME: set your git username
+      userEmail = "nick.pilant2@gmail.com";
+      userName = "tigercat2000";
       extraConfig = {
         # FIXME: uncomment the next lines if you want to be able to clone private https repos
         # url = {

@@ -7,7 +7,6 @@
   inputs,
   ...
 }: {
-  # FIXME: change to your tz! look it up with "timedatectl list-timezones"
   time.timeZone = "America/Los_Angeles";
 
   networking.hostName = "${hostname}";
@@ -17,7 +16,6 @@
     "d /home/${username}/.config/lvim 0755 ${username} users"
   ];
 
-  # FIXME: change your shell here if you don't want zsh
   programs.zsh.enable = true;
   environment.pathsToLink = ["/share/zsh"];
   environment.shells = [pkgs.zsh];
@@ -26,24 +24,13 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  # FIXME: uncomment the next line to enable SSH
-  # services.openssh.enable = true;
-
   users.users.${username} = {
     isNormalUser = true;
-    # FIXME: change your shell here if you don't want zsh
     shell = pkgs.zsh;
     extraGroups = [
       "wheel"
-      # FIXME: uncomment the next line if you want to run docker without sudo
-      # "docker"
+      "docker"
     ];
-    # FIXME: add your own hashed password
-    # hashedPassword = "";
-    # FIXME: add your own ssh public key
-    # openssh.authorizedKeys.keys = [
-    #   "ssh-rsa ..."
-    # ];
   };
 
   environment.systemPackages = [
@@ -95,12 +82,6 @@
   nix = {
     settings = {
       trusted-users = [username];
-      # FIXME: use your access tokens from secrets.json here to be able to clone private repos on GitHub and GitLab
-      # access-tokens = [
-      #   "github.com=${secrets.github_token}"
-      #   "gitlab.com=OAuth2:${secrets.gitlab_token}"
-      # ];
-
       accept-flake-config = true;
       auto-optimise-store = true;
     };

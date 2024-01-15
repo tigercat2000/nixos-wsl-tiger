@@ -75,8 +75,8 @@
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
       nixosConfigurations.nixos = mkNixosConfiguration {
-        hostname = "nixos";
-        username = "nixos"; # FIXME: replace with your own username!
+        hostname = "naomi-nixos";
+        username = "tigercat2000";
         modules = [
           nixos-wsl.nixosModules.wsl
           ./wsl.nix
