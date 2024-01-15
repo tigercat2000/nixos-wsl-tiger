@@ -9,6 +9,7 @@
 }: let
   unstable-packages = with pkgs.unstable; [
     # core binaries that you always want on the bleeding-edge
+    alejandra
     bat
     bottom
     coreutils
@@ -120,6 +121,21 @@ in {
     nix-index.enable = true;
     nix-index.enableZshIntegration = true;
     nix-index-database.comma.enable = true;
+
+    ssh = {
+      enable = true;
+
+      matchBlocks = {
+        "github.com" = {
+          hostname = "github.com";
+          identityFile = "/mnt/c/Users/tigercat2000/Docs/.ssh/keys/private/tigercat2000";
+        };
+        "shadowlarkens.github.com" = {
+          hostname = "github.com";
+          identityFile = "/mnt/c/Users/tigercat2000/Docs/.ssh/keys/private/shadowlarkens";
+        };
+      };
+    };
 
     # disable this if you don't want to use the starship prompt
     starship.enable = true;
